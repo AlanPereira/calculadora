@@ -1,21 +1,16 @@
 package edu.pucsp.calculadora.controller;
 
-import java.util.StringTokenizer;
-
 public class Teste {
 
 	public static void main(String[] args) {
-		String str = "3553+77-(877-44)-888";
-		String delim = "+-()";
-	
+		String str = "353+77*(877-44)-888";
+		VerificaExpressao  v = new VerificaExpressao();
 		
-		System.out.println("---- Split by comma ',' ------");
-		StringTokenizer st2 = new StringTokenizer(str, delim);
+		if(v.validaExpressao(str)){
+			System.out.println(str);
+		}else
+			System.out.println("Falhou");
 
-		while (st2.hasMoreElements()) {
-			System.out.println(st2.nextElement());
-			System.out.println(st2);
-		}
 	}
 
 }
