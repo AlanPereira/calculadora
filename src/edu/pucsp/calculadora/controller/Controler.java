@@ -22,4 +22,9 @@ public class Controler {
 	{
 		setTela(new TelaCalc(this));
 	}
+	
+	public void verificarExprecao(String txt)
+	{
+		
+	}
 }
