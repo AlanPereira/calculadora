@@ -7,7 +7,9 @@ public class VerificaExpressao {
 
 	//delimitadores 
 	private String op;
-
+	//Expressao Matemática
+	private ArrayList<String> list;
+	
 	public VerificaExpressao(){
 		this.op = "(+-/*)";
 	}
@@ -15,37 +17,34 @@ public class VerificaExpressao {
 	public boolean validaExpressao(String exp){
 		boolean ok = true;
 		if(verificaFormat(exp)){
-			ArrayList<String> list = separaExpressao(exp);
-			int n = list.size();
+			setList(separaExpressao(exp));
+			int n = getList().size();
 			int cont = 0,  i = 0;
 			String aux = "";	
 			while (ok && i < n){
-				aux = list.get(i);
+				aux = getList().get(i);
 				if(verfOperador(aux)){
 					
 					if(aux.equals("(")){
-						if(i+1< list.size())
-							if(verfOperador(list.get(i+1), "/*"))
+						if(i+1< getList().size())
+							if(verfOperador(getList().get(i+1), "/*"))
 								ok = false;
 						cont++;
 					}
 					else if(aux.equals(")")){
-						if(verfOperador(list.get(i-1), "+-*/"))
+						if(verfOperador(getList().get(i-1), "+-*/"))
 							ok = false;
 						if(cont>0)
 							cont--;
 						else
 							ok = false;
 					}else{
-						System.out.println(i+" "+  aux+ "size: "+ list.size());
-						if((i == 0) && verfOperador(list.get(i-1), "*/"))
+						if((i == 0) && verfOperador(getList().get(i-1), "*/"))
 							ok = false;
-						else if(i+1 < list.size()){
-							System.out.println("if(verfOperador(list.get(i), ");
-							if(verfOperador(list.get(i+1), "+-/*"))
+						else if(i+1 < getList().size()){
+							if(verfOperador(getList().get(i+1), "+-/*"))
 								ok = false;
 						}else{
-							System.out.println("else final");
 							ok=false;}
 					}
 				}
@@ -55,6 +54,7 @@ public class VerificaExpressao {
 				ok = false;
 		}else
 			ok = false;
+		
 		return ok;
 
 	}
@@ -78,11 +78,7 @@ public class VerificaExpressao {
 			n++;
 		}
 		exp.add(numb);
-		exp.remove("");
-		for(int i = 0; i<exp.size();i++){
-			System.out.println(exp.get(i));
-		}
-		System.out.println("Passou - separa Expressão");
+		exp.remove("");//remove caso o ultimo seja um operador
 		return exp;
 	}
 
@@ -123,6 +119,16 @@ public class VerificaExpressao {
 			}
 		}
 		return ok;
+	}
+
+	
+	public ArrayList<String> getList() {
+		return list;
+	}
+
+	
+	public void setList(ArrayList<String> list) {
+		this.list = list;
 	}
 }
 

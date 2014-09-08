@@ -23,8 +23,23 @@ public class Controler {
 		setTela(new TelaCalc(this));
 	}
 	
-	public void verificarExprecao(String txt)
+	public void verificarExpressao(String txt)
 	{
+		VerificaExpressao expr = new VerificaExpressao();
+		if(expr.validaExpressao(txt)){
+			
+		}else{
+			imprimir();
+			gravar();
+		}
+			
+	}
+	public void imprimir(){
 		
 	}
+	
+	public void gravar(){
+		
+	}
+	
 }
