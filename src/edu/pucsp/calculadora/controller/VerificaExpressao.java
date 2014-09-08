@@ -9,7 +9,7 @@ public class VerificaExpressao {
 	private String op;
 
 	public VerificaExpressao(){
-		this.op = "+-/*()";
+		this.op = "(+-/*)";
 	}
 
 	public boolean validaExpressao(String exp){
@@ -21,33 +21,35 @@ public class VerificaExpressao {
 			String aux = "";	
 			while (ok && i < n){
 				aux = list.get(i);
-				i++;
-				
-				System.out.println(i+" "+aux+" size: "+list.size());
-				if(verfOperador(aux.charAt(0))){
-					/*if(verfOperador(list.get(i).charAt(0), "+*-/") ){
-						if(i+1< list.size()){
-							if(verfOperador(list.get(i+1).charAt(0), "+*-/"))
-								ok = false;
-						}else
-							ok= false;
-					}*/
-
+				if(verfOperador(aux)){
+					
 					if(aux.equals("(")){
 						if(i+1< list.size())
-							if(verfOperador(list.get(i+1).charAt(0)))
+							if(verfOperador(list.get(i+1), "/*"))
 								ok = false;
 						cont++;
 					}
 					else if(aux.equals(")")){
-						if(verfOperador(list.get(i-1).charAt(0)))
+						if(verfOperador(list.get(i-1), "+-*/"))
 							ok = false;
 						if(cont>0)
 							cont--;
 						else
 							ok = false;
+					}else{
+						System.out.println(i+" "+  aux+ "size: "+ list.size());
+						if((i == 0) && verfOperador(list.get(i-1), "*/"))
+							ok = false;
+						else if(i+1 < list.size()){
+							System.out.println("if(verfOperador(list.get(i), ");
+							if(verfOperador(list.get(i+1), "+-/*"))
+								ok = false;
+						}else{
+							System.out.println("else final");
+							ok=false;}
 					}
 				}
+				i++;
 			}
 			if(cont!=0)
 				ok = false;
@@ -60,21 +62,23 @@ public class VerificaExpressao {
 	private ArrayList<String> separaExpressao(String expr){
 
 		ArrayList<String> exp = new ArrayList<String>();
-
-		int n = 0;
+		String arr[] = expr.split("");
+		int n = 1;
 		String numb = "";
 
-		while(n < expr.length()){
-
-			if(verfOperador(expr.charAt(n))){
+		while(n < arr.length){
+			System.out.println(arr[n]);
+			if(verfOperador(arr[n])){
 				exp.add(numb);
-				exp.add(expr.charAt(n)+"");
+				exp.add(arr[n]);
 				numb = "";
+				//exp.remove("");// remove pq o arrayList acaba add espaço antes de add os parentes
 			}else
-				numb = numb + expr.charAt(n);
+				numb = numb + arr[n];
 			n++;
 		}
 		exp.add(numb);
+		exp.remove("");
 		for(int i = 0; i<exp.size();i++){
 			System.out.println(exp.get(i));
 		}
@@ -91,19 +95,17 @@ public class VerificaExpressao {
 				double n = Double.parseDouble(st.nextToken());
 			}
 		}catch (NumberFormatException e) {
-			System.out.println("Passou - verificaFormat pelo catch");
 			return false;
 
 		}
-		System.out.println("Passou - verificaFormat");
 		return ok;
 	}
 
-	private boolean verfOperador(Character carc){
-		String opr = this.op;
+	private boolean verfOperador(String carc){
+		String opr[] = this.op.split("");
 		boolean ok = false;
-		for(int i = 0; i<opr.length();i++){
-			if(opr.charAt(i) == carc){
+		for(int i = 1; i < opr.length;i++){
+			if(opr[i].equals(carc)){
 				ok = true;
 				break;
 			}
@@ -111,17 +113,17 @@ public class VerificaExpressao {
 		return ok;
 	}
 
-	/*private boolean verfOperador(Character op, String txt){
-		String opr = txt;
+	private boolean verfOperador(String op, String txt){
+		String opr [] = txt.split("");
 		boolean ok = false;
-		for(int i = 0; i<opr.length();i++){
-			if(opr.charAt(i) == op){
+		for(int i = 1; i<opr.length;i++){
+			if(opr[i].equals(op)){
 				ok = true;
 				break;
 			}
 		}
 		return ok;
-	}*/
+	}
 }
 
 
