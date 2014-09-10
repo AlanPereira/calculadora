@@ -3,20 +3,17 @@ package edu.pucsp.calculadora.view;
 import javax.swing.JFrame;
 
 import edu.pucsp.calculadora.controller.Controler;
+import edu.pucsp.calculadora.controller.IControle;
+import edu.pucsp.calculadora.controller.ITela;
+import edu.pucsp.calculadora.controller.Icalculadora;
 
-public class TelaCalc extends JFrame{
-	private Controler c;
+public class TelaCalc extends JFrame implements ITela{
+
+	public void iniciar(){
+		
+	}
 	
-	public Controler getC() {
-		return c;
-	}
 
-	public void setC(Controler c) {
-		this.c = c;
-	}
 
-	public TelaCalc(Controler c)
-	{
-		setC(c);
-	}
+	
 }
