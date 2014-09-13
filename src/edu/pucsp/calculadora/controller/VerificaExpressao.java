@@ -88,7 +88,7 @@ public class VerificaExpressao {
 		StringTokenizer st = new StringTokenizer(exp, delim);
 		try{
 			while (st.hasMoreElements()) {
-				double n = Double.parseDouble(st.nextToken());
+				Double.parseDouble(st.nextToken());
 			}
 		}catch (NumberFormatException e) {
 			return false;

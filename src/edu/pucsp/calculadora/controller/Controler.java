@@ -27,31 +27,30 @@ public class Controler implements IControle{
 		getITela().iniciar();
 	}
 		
-	public void imprimir(){
-		
-	}
-	
-	public void gravar(){
+	public void gravar(String expr, String result){
 		
 	}
 
 	@Override
 	public String calcular(String expressao) {
-		String result="";
+		return calcularEquacao(expressao);
+	}
+	
+	private String calcularEquacao(String expressao){
+		String result= "Erro de sintaxe";
 		
 		if(getVerifExpr().validaExpressao(expressao)){
 			result = (new Calculadora().CalcularExp((new PreparaEquacao()).converteInfixa(getVerifExpr().getList())));
-		}else
-			result = "Erro de sintaxe";
+		}
+		gravar(expressao, result);
 		return result;
-		 
 	}
 
-	public VerificaExpressao getVerifExpr() {
+	private VerificaExpressao getVerifExpr() {
 		return verifExpr;
 	}
 
-	public void setVerifExpr(VerificaExpressao verifExpr) {
+	private void setVerifExpr(VerificaExpressao verifExpr) {
 		this.verifExpr = verifExpr;
 	}
 

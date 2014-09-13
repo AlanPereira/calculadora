@@ -8,6 +8,11 @@ import edu.pucsp.calculadora.iface.ITela;
 
 public class TelaCalc extends JFrame implements ITela{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9092516440173107952L;
+	
 	private IControle c;
 	
 	public TelaCalc(IControle c){
