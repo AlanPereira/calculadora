@@ -24,7 +24,6 @@ public class VerificaExpressao {
 			while (ok && i < n){
 				aux = getList().get(i);
 				if(verfOperador(aux)){
-					
 					if(aux.equals("(")){
 						if(i+1< getList().size())
 							if(verfOperador(getList().get(i+1), "/*"))
@@ -39,7 +38,7 @@ public class VerificaExpressao {
 						else
 							ok = false;
 					}else{
-						if((i == 0) && verfOperador(getList().get(i-1), "*/"))
+						if((i == 0) && verfOperador(getList().get(i), "*/"))
 							ok = false;
 						else if(i+1 < getList().size()){
 							if(verfOperador(getList().get(i+1), "+-/*"))
@@ -109,6 +108,7 @@ public class VerificaExpressao {
 		return ok;
 	}
 
+	
 	private boolean verfOperador(String op, String txt){
 		String opr [] = txt.split("");
 		boolean ok = false;
@@ -121,12 +121,10 @@ public class VerificaExpressao {
 		return ok;
 	}
 
-	
 	public ArrayList<String> getList() {
 		return list;
 	}
 
-	
 	public void setList(ArrayList<String> list) {
 		this.list = list;
 	}

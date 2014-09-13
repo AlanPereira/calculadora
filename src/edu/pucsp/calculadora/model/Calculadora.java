@@ -11,11 +11,24 @@ public class Calculadora{
 		ArrayList<String> pilha = new ArrayList<String>();
 		for(int i =0; i<n; i++){
 			if(verfOperador(exprP.get(i), "+-*/^")){
-				double num2 = Double.parseDouble(pilha.remove(pilha.size()-1));
-				double num1 = Double.parseDouble(pilha.remove(pilha.size()-1));
+				double num2, num1;
+				num2 = Double.parseDouble(pilha.remove(pilha.size()-1));
+				if(pilha.size()<1){
+					num1 = 0.0;
+				}else
+					num1 = Double.parseDouble(pilha.remove(pilha.size()-1));
 				switch(exprP.get(i).charAt(0)){
 				case '+':pilha.add(num1+num2+"");break;
-				case '-':pilha.add(num1-num2+"");break;
+				case '-':
+					System.out.println(pilha.size()+":::::"+num1+" - "+num2+"= ");
+					//System.out.println(exprP.get(i+2));
+					if((exprP.size()>i+2) && (exprP.get(i+2).equals("-")))
+						pilha.add(-num1-num2+"");
+					else
+						pilha.add(num1-num2+"");
+					
+					System.out.println(pilha.get(pilha.size()-1));
+					break;
 				case '*':pilha.add(num1*num2+"");break;
 				case '/':
 

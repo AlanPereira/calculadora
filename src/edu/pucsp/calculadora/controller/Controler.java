@@ -3,11 +3,13 @@ package edu.pucsp.calculadora.controller;
 import edu.pucsp.calculadora.iface.IControle;
 import edu.pucsp.calculadora.iface.ITela;
 import edu.pucsp.calculadora.model.Calculadora;
+import edu.pucsp.calculadora.view.LogFileText;
 import edu.pucsp.calculadora.view.TelaCalc;
 
 public class Controler implements IControle{
 	private ITela tela;
 	private VerificaExpressao verifExpr;
+	//private LogFileText logTxt;
 	
 	private ITela getITela() {
 		return tela;
@@ -27,7 +29,7 @@ public class Controler implements IControle{
 		getITela().iniciar();
 	}
 		
-	public void gravar(String expr, String result){
+	private void gravarLog(String expr, String result){
 		
 	}
 
@@ -40,9 +42,11 @@ public class Controler implements IControle{
 		String result= "Erro de sintaxe";
 		
 		if(getVerifExpr().validaExpressao(expressao)){
+			
+			System.out.println("Verifica expressão ok");
 			result = (new Calculadora().CalcularExp((new PreparaEquacao()).converteInfixa(getVerifExpr().getList())));
 		}
-		gravar(expressao, result);
+		gravarLog(expressao, result);
 		return result;
 	}
 

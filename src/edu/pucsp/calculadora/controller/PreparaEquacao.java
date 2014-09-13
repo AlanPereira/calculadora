@@ -40,6 +40,12 @@ public class PreparaEquacao {
 			exprP.add(pilha.remove(pilha.size()-1)); 
 		}
 		pilha = null;
+		System.out.println("Prepara equação ok");
+		
+		for(int i =0; i<exprP.size();i++){
+			System.out.printf(exprP.get(i));
+		}
+		System.out.println();
 		return exprP;
 	}
 
