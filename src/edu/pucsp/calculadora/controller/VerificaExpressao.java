@@ -72,7 +72,7 @@ public class VerificaExpressao {
 				exp.add(numb);
 				exp.add(arr[n]);
 				numb = "";
-				//exp.remove("");// remove pq o arrayList acaba add espaço antes de add os parentes
+				exp.remove("");// remove pq o arrayList acaba add espaço antes de add os parentes
 			}else
 				numb = numb + arr[n];
 			n++;
