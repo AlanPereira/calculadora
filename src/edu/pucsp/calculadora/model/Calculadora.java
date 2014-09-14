@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Calculadora{
 
-	public String CalcularExp(ArrayList<String> exprP){ 
+	public String CalcularExp(ArrayList<String> exprP)throws ArithmeticException{ 
 
 		int n = exprP.size();
 		ArrayList<String> pilha = new ArrayList<String>();
@@ -17,26 +17,20 @@ public class Calculadora{
 					num1 = 0.0;
 				}else
 					num1 = Double.parseDouble(pilha.remove(pilha.size()-1));
-				switch(exprP.get(i).charAt(0)){
-				case '+':pilha.add(num1+num2+"");break;
-				case '-':
-					System.out.println(pilha.size()+":::::"+num1+" - "+num2+"= ");
-					//System.out.println(exprP.get(i+2));
-					if((exprP.size()>i+2) && (exprP.get(i+2).equals("-")))
-						pilha.add(-num1-num2+"");
-					else
-						pilha.add(num1-num2+"");
-					
-					System.out.println(pilha.get(pilha.size()-1));
+				switch(exprP.get(i)){
+				case "+":pilha.add(num1+num2+"");break;
+				case "-":pilha.add(num1-num2+"");
 					break;
-				case '*':pilha.add(num1*num2+"");break;
-				case '/':
-
-					pilha.add(num1/num2+"");
+				case "*":pilha.add(num1*num2+"");break;
+				case "/":
+					double div = num1/num2;
+					if(Double.isInfinite(div) || Double.isNaN(div))
+						throw new ArithmeticException();
+					pilha.add(div+"");
 
 					break;//Atenção
 
-				case '^':pilha.add(Math.pow(num1, num2)+"");break;//Atenção
+				case "^":pilha.add(Math.pow(num1, num2)+"");break;//Atenção
 				}
 			}else
 				pilha.add(exprP.get(i));

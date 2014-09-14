@@ -10,12 +10,24 @@ public class PreparaEquacao {
 	}
 
 	public ArrayList<String> converteInfixa(ArrayList<String> exprI){
-
-		int t = exprI.size();
+		
 		ArrayList<String> exprP = new ArrayList<String>();
 		ArrayList<String> pilha = new ArrayList<String>();
-		for(int i = 0;i<t; i++){
+		for(int i = 0;i<exprI.size(); i++){
 			String carac = exprI.get(i);
+			
+			if(carac.equals("-") && (!exprI.get(i+1).equals("("))){
+				exprI.set(i+1, "-"+exprI.get(i+1));
+				if((i==0) || (exprI.get(i-1).equals("("))){
+					exprI.remove(i);
+					carac = exprI.get(i);
+				}else{
+					exprI.set(i, "+");
+					carac = "+";
+				System.out.println("Teste : ------"+exprI.get(i));	
+				}
+			}
+			
 			if(verfOperador(carac)){
 				int pr = prioridade(carac);
 				while(!pilha.isEmpty() && prioridade(pilha.get(pilha.size()-1)) >= pr){
@@ -40,12 +52,6 @@ public class PreparaEquacao {
 			exprP.add(pilha.remove(pilha.size()-1)); 
 		}
 		pilha = null;
-		System.out.println("Prepara equação ok");
-		
-		for(int i =0; i<exprP.size();i++){
-			System.out.printf(exprP.get(i));
-		}
-		System.out.println();
 		return exprP;
 	}
 
