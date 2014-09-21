@@ -47,7 +47,7 @@ public class LogFileBin implements ILogFile {
 	private String converteBin(String texto){
 		byte[] bytes = texto.getBytes();  
 		String[] binarios = new String[bytes.length];  
-		System.out.println(texto);  
+		//System.out.println(texto);  
 
 		String txt = "";
 		// jogando prum array de string  
@@ -55,9 +55,9 @@ public class LogFileBin implements ILogFile {
 			binarios[i] = Integer.toBinaryString(bytes[i]); 
 			txt = txt + Integer.toBinaryString(bytes[i]);
 			txt = txt+" "; 
-			System.out.println(bytes[i] + " -> " + binarios[i]);  
+			//System.out.println(bytes[i] + " -> " + binarios[i]);  
 		}
-			System.out.println(txt);
+			//System.out.println(txt);
 		return txt;
 	}
 	
@@ -68,7 +68,7 @@ public class LogFileBin implements ILogFile {
 		for (int i=0; i < bin.length; i++) {  
 			texto2.append((char)Integer.parseInt(bin[i],2));
 		}  
-		System.out.println(texto2.toString());
+		//System.out.println(texto2.toString());
 
 		return texto2.toString();
 	}
@@ -102,7 +102,7 @@ public class LogFileBin implements ILogFile {
 		while(!list.isEmpty())
 			dados[i++] = list.remove(0);
 		list = null;
-		System.out.println();
+		//System.out.println();
 		return dados;
 	}
 }

@@ -16,6 +16,7 @@ public class VerificaExpressao {
 
 	public boolean validaExpressao(String exp){
 		boolean ok = true;
+		exp = exp.trim();
 		if(verificaFormat(exp)){
 			setList(separaExpressao(exp));
 			int n = getList().size();
@@ -42,7 +43,10 @@ public class VerificaExpressao {
 							ok = false;
 						else if(i+1 < getList().size()){
 							if(verfOperador(getList().get(i+1), "+-/*"))
-								ok = false;
+								if(aux.equals("/") && verfOperador(getList().get(i+1), "+-"))
+									ok = true;
+								else
+									ok = true;
 						}else{
 							ok=false;}
 					}
