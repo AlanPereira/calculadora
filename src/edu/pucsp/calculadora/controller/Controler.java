@@ -1,8 +1,10 @@
 package edu.pucsp.calculadora.controller;
 
 import edu.pucsp.calculadora.iface.IControle;
+import edu.pucsp.calculadora.iface.ILogFile;
 import edu.pucsp.calculadora.iface.ITela;
 import edu.pucsp.calculadora.model.Calculadora;
+import edu.pucsp.calculadora.view.LogFileBin;
 import edu.pucsp.calculadora.view.LogFileText;
 import edu.pucsp.calculadora.view.TelaCalc;
 
@@ -30,7 +32,11 @@ public class Controler implements IControle{
 	}
 		
 	private void gravarLog(String result){
-		new LogFileText().gravarDados(result);
+		ILogFile log = new LogFileText();
+		log.gravarDados(result);
+		log = new LogFileBin();
+		log.gravarDados(result);
+		
 	}
 
 	@Override

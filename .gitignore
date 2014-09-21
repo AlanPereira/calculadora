@@ -1,4 +1,10 @@
 *.class
+
 *.jar
+
 Teste.java
+
 *.war
+
+LogBin.bin
+LogTxt.txt

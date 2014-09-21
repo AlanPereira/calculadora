@@ -19,15 +19,13 @@ public class TelaCalc extends JFrame implements ITela{
 		this.c = c;
 	}
 
-	public void iniciar(){
-		
+	public void iniciar(){		
 		Scanner scan = new Scanner(System.in);
-		
 		while(true){
-		System.out.println("Digite a express�o:");
+		
+		System.out.println("Digite a expressao:");
 		System.out.println(c.calcular(scan.nextLine()));
 		}
-		//scan.close();
 	}
 	
 
