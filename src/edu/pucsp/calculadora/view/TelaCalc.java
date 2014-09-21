@@ -20,11 +20,14 @@ public class TelaCalc extends JFrame implements ITela{
 	}
 
 	public void iniciar(){
+		
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("Digite a expressão:");
+		while(true){
+		System.out.println("Digite a expressï¿½o:");
 		System.out.println(c.calcular(scan.nextLine()));
-		scan.close();
+		}
+		//scan.close();
 	}
 	
 

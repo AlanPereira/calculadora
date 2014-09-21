@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LogFileText {
+import edu.pucsp.calculadora.iface.LogFile;
+
+public class LogFileText implements LogFile{
 	public boolean gravarDados(String txt){
 		boolean ok = true;
 		File arquivo = new File("Logtexto.txt");
@@ -19,7 +21,7 @@ public class LogFileText {
 				arquivo.createNewFile();
 			}
 
-			//caso seja um diretório, é possível listar seus arquivos e diretórios
+			//caso seja um diretï¿½rio, ï¿½ possï¿½vel listar seus arquivos e diretï¿½rios
 			//File[] arquivos = arquivo.listFiles();
 
 			//escreve no arquivo
