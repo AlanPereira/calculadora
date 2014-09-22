@@ -33,7 +33,7 @@ public class TelaCalc implements ITela{
 
 	}
 	private void preparaJanela() {
-		janela = new JFrame("Argentum");
+		janela = new JFrame("Calculadora");
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	private void preparaPainelPrincipal() {
