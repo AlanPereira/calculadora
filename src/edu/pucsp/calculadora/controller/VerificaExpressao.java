@@ -70,7 +70,7 @@ public class VerificaExpressao {
 		String numb = "";
 
 		while(n < arr.length){
-			System.out.println(arr[n]);
+			//System.out.println(arr[n]);
 			if(verfOperador(arr[n])){
 				exp.add(numb);
 				exp.add(arr[n]);
@@ -112,7 +112,6 @@ public class VerificaExpressao {
 		return ok;
 	}
 
-	
 	private boolean verfOperador(String op, String txt){
 		String opr [] = txt.split("");
 		boolean ok = false;

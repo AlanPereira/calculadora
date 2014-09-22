@@ -24,7 +24,7 @@ public class PreparaEquacao {
 				}else{
 					exprI.set(i, "+");
 					carac = "+";
-					System.out.println("Teste : ------"+exprI.get(i));	
+					//System.out.println("Teste : ------"+exprI.get(i));	
 				}
 			}else if(carac.equals("+")&&(!exprI.get(i+1).equals("(")))
 				if((i==0) || (exprI.get(i-1).equals("("))||(exprI.get(i-1).equals("/")) ){
@@ -56,10 +56,10 @@ public class PreparaEquacao {
 			exprP.add(pilha.remove(pilha.size()-1)); 
 		}
 
-		for(int i =0; i<exprP.size();i++){
-			System.out.printf(exprP.get(i));
-		}
-		System.out.println();
+//		for(int i =0; i<exprP.size();i++){
+//			System.out.printf(exprP.get(i));
+//		}
+//		System.out.println();
 		pilha = null;
 		return exprP;
 	}
