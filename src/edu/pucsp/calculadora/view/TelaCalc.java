@@ -26,34 +26,34 @@ public class TelaCalc implements ITela{
 	
 	public void iniciar() {  
 		preparaJanela();
-		preparaPainelPrincipal();
+		//preparaPainelPrincipal();
 		preparaAreaTexto();
-		preparaBotaoCarregar();
+		//preparaBotaoCarregar();
 		mostraJanela();
-
 	}
+	
 	private void preparaJanela() {
 		janela = new JFrame("Calculadora");
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 	private void preparaPainelPrincipal() {
 		painelPrincipal = new JPanel();
 		janela.add(painelPrincipal);
 
 	}
+	
 	private void preparaAreaTexto() {
-
-
 		areaTxt = new JTextArea();
 		areaTxt.setSize(100, 40);
 		areaTxt.setText("0");
 		areaTxt.setVisible(true);
 		areaTxt.setAutoscrolls(true);
 
-		JScrollPane scroll = new JScrollPane(); 
-		scroll.getViewport().add(areaTxt); 
+	//	JScrollPane scroll = new JScrollPane(); 
+//		scroll.getViewport().add(areaTxt); 
 
-		painelPrincipal.add(scroll);
+		janela.add(areaTxt);
 
 	}
 
@@ -83,7 +83,7 @@ public class TelaCalc implements ITela{
 	}
 	private void mostraJanela() {
 		janela.pack();
-		janela.setSize(400, 250);
+		janela.setSize(310, 200);
 		janela.setResizable(false);
 		janela.setVisible(true);	
 
