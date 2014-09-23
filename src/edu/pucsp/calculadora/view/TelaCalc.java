@@ -1,5 +1,6 @@
 package edu.pucsp.calculadora.view;
 
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
@@ -9,51 +10,35 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import edu.pucsp.calculadora.iface.IControle;
 import edu.pucsp.calculadora.iface.ITela;
 
 
-public class TelaCalc implements ITela{ 
-	private JFrame janela;
-	private JPanel painelPrincipal;
-	private JTextArea areaTxt;
+public class TelaCalc extends JFrame implements ITela{ 
+	private JTextField txt1;
 	private IControle controle;
-	
+
 	public TelaCalc(IControle controle){
 		this.setControle(controle);
 	}
-	
+
 	public void iniciar() {  
-		preparaJanela();
-		//preparaPainelPrincipal();
 		preparaAreaTexto();
-		//preparaBotaoCarregar();
+		preparaBotaoCarregar();
 		mostraJanela();
-	}
-	
-	private void preparaJanela() {
-		janela = new JFrame("Calculadora");
-		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-	
-	private void preparaPainelPrincipal() {
-		painelPrincipal = new JPanel();
-		janela.add(painelPrincipal);
+	}	
 
-	}
-	
 	private void preparaAreaTexto() {
-		areaTxt = new JTextArea();
-		areaTxt.setSize(100, 40);
-		areaTxt.setText("0");
-		areaTxt.setVisible(true);
-		areaTxt.setAutoscrolls(true);
-
-	//	JScrollPane scroll = new JScrollPane(); 
-//		scroll.getViewport().add(areaTxt); 
-
-		janela.add(areaTxt);
+		txt1 = new JTextField();
+		txt1.setLocation(10, 5);
+		txt1.setText("0");
+		txt1.setSize(280, 30);
+		txt1.setBorder(null);
+		txt1.setHorizontalAlignment(JTextField.RIGHT);
+		txt1.setCaretPosition(1);
+		add(txt1);
 
 	}
 
@@ -64,32 +49,41 @@ public class TelaCalc implements ITela{
 				//
 			}
 		};
-		JButton[] aux = new JButton[10];
-		for(int i =0; i<10;i++){
-			aux[i] = new JButton(""+i);
-			aux[i].addActionListener(listener);
-
-			painelPrincipal.add(aux[i]);
-		}
+		int k = 9;
+		JButton[] aux = new JButton[9];
+		for(int j= 0; j<3;j++)
+			for(int i =0; i<3;i++){
+				aux[i] = new JButton();
+				String t = k--+"";
+				aux[i].setText(t);
+				aux[i].addActionListener(listener);
+				aux[i].setSize(35,30);
+				aux[i].setLocation(10+40*i,40+35*j);
+				add(aux[i]);
+			}
 		JButton botaoSair = new JButton("Sair");
-		  botaoSair.addActionListener(new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent e) {
-		      System.exit(0);
-		    }
-		  });
-		  painelPrincipal.add(botaoSair);
+		botaoSair.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		add(botaoSair);
 
 	}
+
 	private void mostraJanela() {
-		janela.pack();
-		janela.setSize(310, 200);
-		janela.setResizable(false);
-		janela.setVisible(true);	
+		//pack();
+		setSize(310, 200);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(null);
+		setResizable(false);
+		setVisible(true);	
+
 
 	}
 	public static void main(String[] args ) {  
-		Locale.setDefault(new Locale("pt", "BR"));
+		//Locale.setDefault(new Locale("pt", "BR"));
 		TelaCalc exe = new TelaCalc(null);  
 		exe.iniciar();     
 	}
