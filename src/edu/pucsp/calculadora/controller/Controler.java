@@ -6,7 +6,7 @@ import edu.pucsp.calculadora.iface.ITela;
 import edu.pucsp.calculadora.model.Calculadora;
 import edu.pucsp.calculadora.view.LogFileBin;
 import edu.pucsp.calculadora.view.LogFileText;
-import edu.pucsp.calculadora.view.TelaCalc;
+import edu.pucsp.calculadora.view.Visual;
 
 public class Controler implements IControle{
 	private ITela tela;
@@ -23,7 +23,7 @@ public class Controler implements IControle{
 	
 	public Controler()
 	{
-		setITela(new TelaCalc(this));//talves trocar para o iniciar;
+		setITela(new Visual(this));//talves trocar para o iniciar;
 		setVerifExpr(new VerificaExpressao());
 	}
 	
