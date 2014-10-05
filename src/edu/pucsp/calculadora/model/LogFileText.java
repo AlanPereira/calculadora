@@ -1,4 +1,4 @@
-package edu.pucsp.calculadora.view;
+package edu.pucsp.calculadora.model;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,9 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import edu.pucsp.calculadora.iface.ILogFile;
+import edu.pucsp.calculadora.iface.ILog;
 
-public class LogFileText implements ILogFile{
+public class LogFileText implements ILog{
 	public boolean gravarDados(String txt){
 		boolean ok = true;
 		File arquivo = new File("LogTxt.txt");
