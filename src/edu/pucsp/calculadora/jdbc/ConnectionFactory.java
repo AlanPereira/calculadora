@@ -10,10 +10,18 @@ public class ConnectionFactory {
 		try {
 			String user, password; 
 			user="root";password="";
-			return DriverManager.getConnection(
-					url, user, password);
+
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			return DriverManager.getConnection(url, user, password);
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (IllegalAccessException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-	}
+		return null;
+	}	
 }
