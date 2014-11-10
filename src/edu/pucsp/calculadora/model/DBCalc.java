@@ -3,6 +3,8 @@ package edu.pucsp.calculadora.model;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import edu.pucsp.calculadora.iface.ILog;
 import edu.pucsp.calculadora.jdbc.ConnectionFactory;
@@ -11,19 +13,23 @@ public class DBCalc implements ILog{
 
 	@Override
 	public boolean gravarDados(String txt) {
-		String url = "jdbc:mysql://localhost:3306/";
 		String db = "db_calc";
-
+		String url = "jdbc:mysql://localhost:3306/"+db;
 		Connection con = new ConnectionFactory().getConnection(url);
 		Statement st;
 
 		try {
-			st = con.createStatement();
-			st.execute("CREATE DATABASE IF NOT EXISTS "+db);
 			
-			if(createTable(st, db)){
-				System.out.println("Teste ok");
-			}
+			String data = (new SimpleDateFormat("yyyy/MM/dd")).format(new Date());
+			String hora = (new SimpleDateFormat("HH:mm:ss")).format(new Date());
+			st = con.createStatement();
+			
+			String sql = "INSERT INTO LogCalc (Expressao) VALUES('"+txt+"')";
+			
+			
+			
+			st.execute(sql);
+			
 			
 			
 			st.close();
@@ -38,28 +44,7 @@ public class DBCalc implements ILog{
 		return false;
 	}
 
-	private boolean createTable(Statement st, String db) {
-		
-		boolean ok = true;
-		try{ 
-			String SQL = (db+" CREATE TABLE calc " +
-			"(Nome VARCHAR(60), Idade INT(2))");
-			st.execute(SQL);
-			
-			
-		}catch(SQLException e) {
-			System.out.println("SQLException: " + e.getMessage());
-			ok = false;
-		}catch(Exception e) {
-			ok = false;
-			System.out.println("Exception: " + e.getMessage());
-		}      
-		
-		
-		
-		return ok;
-	}
-
+	
 	@Override
 	public String[] lerDados() {
 		// TODO Auto-generated method stub

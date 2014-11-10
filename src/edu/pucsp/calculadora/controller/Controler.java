@@ -34,8 +34,7 @@ public class Controler implements IControle{
 		ILog log = new LogFileText();
 		log.gravarDados(result);
 		log = new LogFileBin();
-		log.gravarDados(result);
-		
+		log.gravarDados(result);	
 	}
 
 	@Override
