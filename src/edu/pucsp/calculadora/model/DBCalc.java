@@ -24,14 +24,9 @@ public class DBCalc implements ILog{
 			String hora = (new SimpleDateFormat("HH:mm:ss")).format(new Date());
 			st = con.createStatement();
 			
-			String sql = "INSERT INTO LogCalc (Expressao) VALUES('"+txt+"')";
-			
-			
-			
+			String sql = "INSERT INTO LogCalc (Expressao, Data, Hora) VALUES('"+txt+"', '"+data+"', '"+hora+"')";			
 			st.execute(sql);
-			
-			
-			
+
 			st.close();
 			con.close();
 

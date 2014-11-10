@@ -27,7 +27,7 @@ public class AdmDB {
 					+ "	id BIGINT NOT NULL AUTO_INCREMENT,"
 					+ "Expressao VARCHAR(255),"
 					+ "Data DATE,"
-					+ "hora TIME,"
+					+ "Hora TIME,"
 					+ "primary key (id));");
 
 			st.close();
