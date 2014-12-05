@@ -1,0 +1,11 @@
+﻿Instruções para a execução do servidor
+1. Caso esteja usando o eclipse, não se esqueça de acrescentar o driver do mysql e na classe ConnectionFactory configure o usuario e senha do banco de dados.
+2. Deve executar a classe AdmDB antes de executar a aplicação (caso seja a primeira vez) pois é preciso cria o banco e as tabelas.
+3. Por fim, execute a classe app no packet do server;
+
+
+
+
+Instruções para a execução do cliente
+1. Caso esteja usando o eclipse, modifique o ip do servido na classe Cliente
+2. execute a classe App.
