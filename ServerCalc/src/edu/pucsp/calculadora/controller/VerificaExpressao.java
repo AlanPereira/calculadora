@@ -7,7 +7,7 @@ public class VerificaExpressao {
 
 	//delimitadores 
 	private String op;
-	//Expressao Matemática
+	//Expressao Matematica
 	private ArrayList<String> list;
 	
 	public VerificaExpressao(){
@@ -17,6 +17,9 @@ public class VerificaExpressao {
 	public boolean validaExpressao(String exp){
 		boolean ok = true;
 		exp = exp.trim();
+		if(exp.equals(""))
+			return false;
+		
 		if(verificaFormat(exp)){
 			setList(separaExpressao(exp));
 			int n = getList().size();
@@ -75,7 +78,7 @@ public class VerificaExpressao {
 				exp.add(numb);
 				exp.add(arr[n]);
 				numb = "";
-				exp.remove("");// remove pq o arrayList acaba add espaço antes de add os parentes
+				exp.remove("");// remove pq o arrayList acaba add espaï¿½o antes de add os parentes
 			}else
 				numb = numb + arr[n];
 			n++;

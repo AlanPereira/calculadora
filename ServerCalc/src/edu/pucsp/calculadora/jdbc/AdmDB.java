@@ -23,7 +23,7 @@ public class AdmDB {
 			st = con.createStatement();
 			st.execute("CREATE DATABASE IF NOT EXISTS "+db);
 			st.execute("USE "+db);
-			st.execute(" create table LogCalc ("
+			st.execute(" CREATE TABLE IF NOT EXISTS LogCalc ("
 					+ "	id BIGINT NOT NULL AUTO_INCREMENT,"
 					+ "Expressao VARCHAR(255),"
 					+ "Data DATE,"

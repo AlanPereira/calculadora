@@ -2,33 +2,16 @@ package edu.pucsp.calculadora.controller;
 
 import edu.pucsp.calculadora.iface.IControle;
 import edu.pucsp.calculadora.iface.ILog;
-import edu.pucsp.calculadora.iface.ITela;
 import edu.pucsp.calculadora.model.DBCalc;
 import edu.pucsp.calculadora.model.LogFileBin;
 import edu.pucsp.calculadora.model.LogFileText;
-import edu.pucsp.calculadora.view.Visual;
 
 public class Controler implements IControle{
-	private ITela tela;
 	private VerificaExpressao verifExpr;
-	//private LogFileText logTxt;
-	
-	private ITela getITela() {
-		return tela;
-	}
-
-	private void setITela(ITela tela) {
-		this.tela = tela;
-	}
 	
 	public Controler()
 	{
-		setITela(new Visual(this));//talves trocar para o iniciar;
 		setVerifExpr(new VerificaExpressao());
-	}
-	
-	public void iniciar(){
-		getITela().iniciar();
 	}
 		
 	private void gravarLog(String result){

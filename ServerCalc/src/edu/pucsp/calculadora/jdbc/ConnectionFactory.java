@@ -9,7 +9,7 @@ public class ConnectionFactory {
 	public Connection getConnection(String url) {
 		try {
 			String user, password; 
-			user="root";password="";
+			user="root";password="root";
 
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			return DriverManager.getConnection(url, user, password);
