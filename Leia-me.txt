@@ -9,3 +9,5 @@
 Instruções para a execução do cliente
 1. Caso esteja usando o eclipse, modifique o ip do servido na classe Cliente
 2. execute a classe App.
+
+Teste
